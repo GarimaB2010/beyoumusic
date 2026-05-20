@@ -1114,6 +1114,22 @@ if (sentMessage === "true") {
   notice.textContent = "Thank you. Your inquiry was sent to Be You Music Education.";
   document.body.appendChild(notice);
 }
+
+tabButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const selectedTerm = button.dataset.term;
+
+    tabButtons.forEach((tab) => {
+      const isActive = tab.dataset.term === selectedTerm;
+      tab.classList.toggle("active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+    });
+
+    termPanels.forEach((panel) => {
+      panel.classList.toggle("active", panel.dataset.termPanel === selectedTerm);
+    });
+  });
+});
 </script>
 </body>
 </html>
